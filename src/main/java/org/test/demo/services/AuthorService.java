@@ -21,7 +21,8 @@ public class AuthorService {
     }
 
     public Author getAuthorByIdQuery(Long id) {
-        Query<Author> query = session.createQuery("from Author where id="+ id, Author.class);
+        Query<Author> query = session.createQuery("from Author where id= :id", Author.class)
+                .setParameter("id", id);
         query.setCacheable(true);
         return query.getSingleResult();
     }
