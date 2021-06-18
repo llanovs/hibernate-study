@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- for local app and test purposes -->
+        <property name="connection.url">jdbc:mysql://localhost:3306/testhibernate?useSSL=false&amp;serverTimeZone=UTC</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+
+        <property name="hbm2ddl.auto">update</property>
+        <property name="show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <property name="hibernate.connection.characterEncoding">utf8</property>
+
+        <property name="default_schema">testhibernate</property>
+
+        <!-- coupling for session -->
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+        <property name="hibernate.cache.use_query_cache">true</property>
+
+        <mapping class="org.test.demo.entities.Author" />
+        <mapping class="org.test.demo.entities.Book" />
+
+    </session-factory>
+</hibernate-configuration>
